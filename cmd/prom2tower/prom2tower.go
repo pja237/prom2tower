@@ -47,7 +47,7 @@ func main() {
 		logFile = os.Stderr
 	}
 
-	log := log.New(logFile, "gobler:", log.Lshortfile|log.Ldate|log.Lmicroseconds)
+	log := log.New(logFile, "prom2tower:", log.Lshortfile|log.Ldate|log.Lmicroseconds)
 
 	version.DumpVersion(log)
 	log.Println("======================== goglu start ===========================================")
