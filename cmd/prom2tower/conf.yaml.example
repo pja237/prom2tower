@@ -1,0 +1,38 @@
+globals:
+  name: gluMaster
+  listenAddr: ":9999"
+  logFile: "/tmp/prom2tower.log or unset this to log to stderr"
+  towerHost: "http://localhost:10000"
+  towerToken: "Paste here Global token, can be overridden per pipe below, same as with towerHost"
+glue:
+  - name: alertmanager-tower-glue
+    ingress:
+      path: "/webhook-url-configured-as-alertmanager-receiver"
+    egress:
+      towerHost: "https://tower.local.lan"
+      towerToken: "PasteLocalTokenHere"
+      path: "/api/v2/job_templates/364/launch/"
+      method: "POST"
+      body: >
+        { 
+          "limit": "{{ range .Alerts }}{{ .Labels.instance }},{{ end }}",
+          "verbosity": 3,
+          "extra_vars": 
+            { 
+              "input": "Firing for: {{ range .Alerts }}{{ .Labels.instance }} {{ end }}"
+            } 
+        }
+  - name: incoming-outgoing-glue
+    ingress:
+      path: "/webhook-2"
+    egress:
+      towerToken: "PasteLocalTokenHere"
+      path: "/paste/here/path"
+      method: "POST"
+      body: >
+        { 
+          "extra_vars": 
+            { 
+              "input": "{{ .ExternalURL }}"
+            } 
+        }
