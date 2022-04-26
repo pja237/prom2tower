@@ -1,3 +1,5 @@
 .vscode/**
 *.swp
 test_data/**
+build/**
+prom2tower

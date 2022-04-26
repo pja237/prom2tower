@@ -10,6 +10,7 @@ import (
 
 	"github.com/pja237/prom2tower/internal/configuration"
 	"github.com/pja237/prom2tower/internal/pipe"
+	"github.com/pja237/prom2tower/internal/version"
 )
 
 const defaultConfFile = "conf.yaml"
@@ -48,6 +49,7 @@ func main() {
 
 	log := log.New(logFile, "gobler:", log.Lshortfile|log.Ldate|log.Lmicroseconds)
 
+	version.DumpVersion(log)
 	log.Println("======================== goglu start ===========================================")
 
 	// loop through the glue, spin up pipes
