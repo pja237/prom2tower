@@ -29,6 +29,11 @@ Example endpoint configuration:
         }
 ```
 
+Example end-to-end pipeline setup diagram:
+
+![End to end pipeline diagram](./images/prom2tower.png)
+
+
 ## Usage
 
 ### Build
