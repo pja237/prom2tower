@@ -2,6 +2,8 @@
 
 Prometheus2tower is a service that integrates [prometheus-alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) and [Ansible Tower](https://docs.ansible.com/ansible-tower/).
 
+_Accompanying ansible role for deployment can be found [here](https://github.com/pja237/role-prom2tower)_
+
 Its primary use is to trigger job template runs (e.g. remediation playbooks) when specific alerts are fired, although other use-cases could be thought-out.
 
 It listens on [configured](cmd/prom2tower/conf.yaml.example) endpoints for incoming alerts. Upon receipt, unmarshalls received JSON and can use this data to fill out the template of the configured tower request body.
